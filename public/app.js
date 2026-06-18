@@ -6,9 +6,9 @@ const money = value => new Intl.NumberFormat("pt-BR", { style: "currency", curre
 
 const riverImages = {
   guapore: "radial-gradient(circle at 78% 22%,rgba(217,240,111,.32) 0 5%,transparent 6%),linear-gradient(145deg,rgba(5,44,41,.25),rgba(5,44,41,.8)),repeating-linear-gradient(165deg,#4c8876 0 18px,#367362 18px 32px,#1e5a50 32px 56px)",
-  machado: "radial-gradient(ellipse at 30% 70%,#79bec0 0 10%,transparent 11%),linear-gradient(145deg,rgba(5,44,41,.12),rgba(5,44,41,.78)),repeating-linear-gradient(28deg,#69a17d 0 14px,#316c58 14px 31px,#1d534a 31px 50px)",
-  madeira: "radial-gradient(ellipse at 60% 42%,#83b8b5 0 12%,transparent 13%),linear-gradient(160deg,rgba(6,48,44,.18),rgba(4,37,34,.84)),repeating-linear-gradient(150deg,#567c65 0 20px,#325f4f 20px 37px,#19473f 37px 55px)",
-  mamore: "radial-gradient(ellipse at 42% 55%,#78bfc4 0 9%,transparent 10%),linear-gradient(140deg,rgba(8,60,55,.15),rgba(5,49,45,.82)),repeating-linear-gradient(38deg,#6d9e74 0 16px,#3d735c 16px 34px,#23544a 34px 52px)",
+  machado: "linear-gradient(180deg,rgba(4,35,32,.03) 30%,rgba(3,34,31,.72)),url('/images/rivers/machado.jpg')",
+  madeira: "linear-gradient(180deg,rgba(4,35,32,.03) 30%,rgba(3,34,31,.72)),url('/images/rivers/madeira.jpg')",
+  mamore: "linear-gradient(180deg,rgba(4,35,32,.03) 30%,rgba(3,34,31,.72)),url('/images/rivers/mamore.jpg')",
   roosevelt: "radial-gradient(ellipse at 70% 40%,#79b8b0 0 11%,transparent 12%),linear-gradient(150deg,rgba(8,60,55,.08),rgba(5,49,45,.84)),repeating-linear-gradient(160deg,#608b6e 0 18px,#396b56 18px 35px,#204d43 35px 54px)"
 };
 
