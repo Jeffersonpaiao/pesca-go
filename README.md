@@ -34,14 +34,14 @@ npm test
 
 ## Publicar para acesso externo
 
-O projeto inclui `render.yaml` e pode ser publicado como um Web Service no Render:
+O projeto inclui `render.yaml` e pode ser publicado como um Static Site no Render. Essa modalidade nao adormece por inatividade:
 
 1. Envie esta pasta para um repositorio no GitHub.
 2. No Render, crie um novo Blueprint e conecte o repositorio.
 3. Confirme o servico `pesca-go` e inicie a publicacao.
 4. Ao final, abra a URL HTTPS fornecida pelo Render em qualquer celular ou computador.
 
-Os dados demonstrativos ficam em memoria. Reinicios do servidor restauram o estado inicial; para uso real, conecte o modelo de `database/schema.sql` a um PostgreSQL.
+Na versao publicada, os dados demonstrativos ficam no armazenamento local de cada navegador. Para uso real e compartilhado, conecte o modelo de `database/schema.sql` a um PostgreSQL.
 
 ## Estrutura
 

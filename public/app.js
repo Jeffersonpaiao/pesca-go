@@ -13,9 +13,7 @@ const riverImages = {
 };
 
 async function api(path, options = {}) {
-  const response = await fetch(path, { headers: { "Content-Type": "application/json" }, ...options });
-  if (!response.ok) throw new Error((await response.json()).error || "Nao foi possivel concluir.");
-  return response.json();
+  return window.PescaGoData.request(path, options);
 }
 
 function showView(name) {
