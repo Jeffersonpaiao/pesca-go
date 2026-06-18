@@ -118,3 +118,34 @@ async function init() {
 }
 
 init().catch(error => toast("Ops, algo deu errado", error.message));
+
+let installPrompt;
+const installButton = $("#install-app");
+const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js"));
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  installPrompt = event;
+  if (!isStandalone) installButton.classList.remove("hidden");
+});
+
+if (isIos && !isStandalone) installButton.classList.remove("hidden");
+
+installButton.addEventListener("click", async () => {
+  if (installPrompt) {
+    installPrompt.prompt();
+    await installPrompt.userChoice;
+    installPrompt = null;
+    installButton.classList.add("hidden");
+    return;
+  }
+  toast("Instalar no iPhone", "No Safari, toque em Compartilhar e depois em Adicionar a Tela de Inicio.");
+});
+
+window.addEventListener("appinstalled", () => {
+  installButton.classList.add("hidden");
+  toast("Pesca GO instalado!", "O aplicativo foi adicionado ao seu celular.");
+});

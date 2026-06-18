@@ -43,6 +43,15 @@ O projeto inclui `render.yaml` e pode ser publicado como um Static Site no Rende
 
 Na versao publicada, os dados demonstrativos ficam no armazenamento local de cada navegador. Para uso real e compartilhado, conecte o modelo de `database/schema.sql` a um PostgreSQL.
 
+## Instalar no celular
+
+Depois que a publicacao HTTPS do Render terminar:
+
+- Android/Chrome: abra o site e toque em `Instalar Pesca GO` ou use o menu `Instalar app`.
+- iPhone/Safari: toque em `Compartilhar` e depois em `Adicionar a Tela de Inicio`.
+
+O PWA inclui icones da marca, tela independente e cache offline dos arquivos principais.
+
 ## Estrutura
 
 ```text
