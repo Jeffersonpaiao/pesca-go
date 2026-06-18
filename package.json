@@ -1,0 +1,13 @@
+{
+  "name": "pesca-go-mvp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MVP responsivo da plataforma Pesca GO",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Local runtime and temporary files
+work/
+*.log
+*.pid
+
+# Deliverable packages
+outputs/
+
+# Environment and editor settings
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/

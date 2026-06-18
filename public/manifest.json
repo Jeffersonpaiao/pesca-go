@@ -1,0 +1,9 @@
+{
+  "name": "Pesca GO",
+  "short_name": "Pesca GO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfcf9",
+  "theme_color": "#073f3b",
+  "description": "Pesca esportiva em Rondonia"
+}

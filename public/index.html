@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#073f3b">
+  <meta name="description" content="Pesca GO conecta pescadores aos melhores guias, barcos e rios de Rondonia.">
+  <title>Pesca GO - Sua proxima pesca comeca aqui</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-view="home" aria-label="Ir para inicio">
+        <span class="brand-mark"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M9 26c7-11 18-13 27-6-7 11-18 13-27 6Z"/><path d="m10 26-5 6 2-10 3 4Z"/><circle cx="31" cy="21" r="1.5"/><path d="M18 29c4-1 7-4 8-8"/></svg></span>
+        <span>PESCA <b>GO</b></span>
+      </button>
+      <nav class="desktop-nav" aria-label="Navegacao principal">
+        <button class="nav-link active" data-view="home">Explorar</button>
+        <button class="nav-link" data-view="trips">Minhas pescas</button>
+        <button class="nav-link" data-view="provider">Area do parceiro</button>
+        <button class="nav-link" data-view="admin">Administracao</button>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-button" id="notification-button" aria-label="Notificacoes"><svg><use href="#icon-bell"/></svg><span class="dot"></span></button>
+        <button class="profile-button"><span>LA</span><span class="profile-copy"><small>Ola,</small><b>Lucas</b></span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="home-view">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Explore Rondonia pelas aguas</span>
+            <h1>Sua proxima grande historia <em>comeca no rio.</em></h1>
+            <p>Guias verificados, barcos seguros e os melhores pontos de pesca esportiva em um so lugar.</p>
+          </div>
+          <div class="hero-stat"><span>4,9</span><div class="stars">★★★★★</div><small>media dos nossos guias</small></div>
+        </div>
+
+        <form class="search-card" id="search-form">
+          <label class="search-field destination"><span class="field-icon"><svg><use href="#icon-pin"/></svg></span><span><small>ONDE PESCAR</small><select id="river-select" aria-label="Onde pescar"><option value="">Escolha um rio ou cidade</option></select></span></label>
+          <label class="search-field"><span class="field-icon"><svg><use href="#icon-calendar"/></svg></span><span><small>QUANDO</small><input type="date" id="date-input" required></span></label>
+          <label class="search-field"><span class="field-icon"><svg><use href="#icon-users"/></svg></span><span><small>PESCADORES</small><select id="people-select"><option value="1">1 pessoa</option><option value="2" selected>2 pessoas</option><option value="3">3 pessoas</option><option value="4">4+ pessoas</option></select></span></label>
+          <button class="primary-button search-button" type="submit"><svg><use href="#icon-search"/></svg><span>Buscar aventura</span></button>
+        </form>
+
+        <section class="quick-section section-wrap">
+          <div class="section-heading"><div><span class="kicker">DO SEU JEITO</span><h2>O que voce procura?</h2></div></div>
+          <div class="quick-grid">
+            <button class="quick-card" data-service="Guia"><span class="quick-icon"><svg><use href="#icon-compass"/></svg></span><span><b>Guia de pesca</b><small>Conhecimento local</small></span><svg class="arrow"><use href="#icon-arrow"/></svg></button>
+            <button class="quick-card" data-service="Barco"><span class="quick-icon"><svg><use href="#icon-boat"/></svg></span><span><b>Alugar barco</b><small>Pronto para navegar</small></span><svg class="arrow"><use href="#icon-arrow"/></svg></button>
+            <button class="quick-card" data-service="Piloteiro"><span class="quick-icon"><svg><use href="#icon-wheel"/></svg></span><span><b>Com piloteiro</b><small>Seguranca no rio</small></span><svg class="arrow"><use href="#icon-arrow"/></svg></button>
+            <button class="quick-card featured" data-service="Pacote completo"><span class="quick-icon"><svg><use href="#icon-package"/></svg></span><span><b>Pacote completo</b><small>So leve a vontade</small></span><span class="popular">POPULAR</span><svg class="arrow"><use href="#icon-arrow"/></svg></button>
+          </div>
+        </section>
+
+        <section class="rivers-section section-wrap">
+          <div class="section-heading"><div><span class="kicker">DESTINOS EM DESTAQUE</span><h2>Rios que pedem uma visita</h2></div><button class="text-button" id="all-rivers">Ver todos <svg><use href="#icon-arrow"/></svg></button></div>
+          <div class="river-grid" id="river-grid"></div>
+        </section>
+
+        <section class="trust-banner section-wrap">
+          <div><span class="trust-icon"><svg><use href="#icon-shield"/></svg></span><div><b>Pesque tranquilo. A gente cuida do resto.</b><p>Todos os parceiros passam por verificacao de documentos, embarcacao e historico.</p></div></div>
+          <button class="secondary-button">Conheca nosso padrao de seguranca</button>
+        </section>
+      </section>
+
+      <section class="view" id="results-view">
+        <div class="results-header section-wrap"><button class="back-button" data-view="home"><svg><use href="#icon-back"/></svg></button><div><span class="kicker">OPCOES PARA VOCE</span><h1 id="results-title">Guias disponiveis</h1><p id="results-subtitle">Compare e escolha quem vai conduzir sua proxima historia.</p></div></div>
+        <div class="results-layout section-wrap">
+          <div><div class="filter-row"><button class="filter-chip active">Disponiveis agora</button><button class="filter-chip">Melhor avaliacao</button><button class="filter-chip">Menor preco</button></div><div class="provider-list" id="provider-list"></div></div>
+          <aside class="map-panel"><div class="map-watermark">RO</div><div class="map-river river-a"></div><div class="map-river river-b"></div><div id="map-pins"></div><div class="map-label">RONDONIA</div><div class="map-legend"><span></span> Parceiros disponiveis</div></aside>
+        </div>
+      </section>
+
+      <section class="view" id="trips-view">
+        <div class="page-heading section-wrap"><span class="kicker">SUA JORNADA</span><h1>Minhas pescas</h1><p>Acompanhe propostas, reservas e experiencias anteriores.</p></div>
+        <div class="trip-tabs section-wrap"><button class="active">Em andamento</button><button>Concluidas</button><button>Canceladas</button></div>
+        <div class="trip-card section-wrap" id="trip-card">
+          <div class="trip-status"><span>PROPOSTA RECEBIDA</span><small>#PG-2408</small></div>
+          <div class="trip-main"><div class="provider-avatar large">MT</div><div><h3>Pesca no Rio Guapore</h3><p>Com Marcos Tavares · 18 de julho · 2 pescadores</p><div class="trip-meta"><span><svg><use href="#icon-package"/></svg> Pacote completo</span><span><svg><use href="#icon-clock"/></svg> Saida as 6h</span></div></div><div class="trip-price"><small>TOTAL</small><b>R$ 1.360</b></div></div>
+          <div class="proposal-note"><div class="provider-avatar tiny">MT</div><p>“O barco e os coletes estao incluidos. Podemos sair as 6h?”</p></div>
+          <div class="trip-actions"><button class="danger-link" id="decline-proposal">Recusar</button><button class="secondary-button" id="open-chat">Conversar</button><button class="primary-button" id="accept-proposal">Aceitar proposta</button></div>
+        </div>
+        <div class="empty-card section-wrap hidden" id="trip-empty"><span class="empty-icon"><svg><use href="#icon-check"/></svg></span><h3>Proposta recusada</h3><p>Voce pode voltar a explorar e pedir uma nova proposta quando quiser.</p><button class="primary-button" data-view="home">Explorar destinos</button></div>
+      </section>
+
+      <section class="view" id="provider-view">
+        <div class="dashboard-hero"><div class="section-wrap"><span class="kicker light">PAINEL DO PARCEIRO</span><h1>Bom dia, Marcos.</h1><p>Tem uma nova oportunidade esperando por voce.</p></div></div>
+        <div class="dashboard-grid section-wrap">
+          <div class="metric-card"><span class="metric-icon"><svg><use href="#icon-inbox"/></svg></span><div><small>NOVAS SOLICITACOES</small><b>03</b><span>+2 desde ontem</span></div></div>
+          <div class="metric-card"><span class="metric-icon"><svg><use href="#icon-calendar"/></svg></span><div><small>PROXIMAS PESCAS</small><b>07</b><span>Nos proximos 30 dias</span></div></div>
+          <div class="metric-card"><span class="metric-icon"><svg><use href="#icon-star"/></svg></span><div><small>SUA AVALIACAO</small><b>4,9</b><span>127 avaliacoes</span></div></div>
+          <div class="metric-card"><span class="metric-icon"><svg><use href="#icon-wallet"/></svg></span><div><small>PREVISAO DO MES</small><b>R$ 8,4 mil</b><span class="up">+18% este mes</span></div></div>
+        </div>
+        <div class="dashboard-content section-wrap">
+          <div><div class="section-heading compact"><div><span class="kicker">AGUARDANDO VOCE</span><h2>Novas solicitacoes</h2></div><button class="text-button">Ver todas</button></div>
+            <article class="request-card"><div class="request-top"><div><span class="request-new">NOVA</span><h3>Lucas quer pescar no Rio Guapore</h3><p>18 de julho · 2 pessoas · Pacote completo</p></div><b>R$ 1.360</b></div><div class="request-details"><span><svg><use href="#icon-pin"/></svg> Costa Marques, RO</span><span><svg><use href="#icon-fish"/></svg> Tucunare e pirarara</span></div><div class="trip-actions"><button class="danger-link">Recusar</button><button class="secondary-button">Contraproposta</button><button class="primary-button" id="provider-accept">Aceitar por R$ 1.360</button></div></article>
+          </div>
+          <aside class="availability-card"><div class="section-heading compact"><div><span class="kicker">AGENDA</span><h2>Disponibilidade</h2></div></div><div class="availability-toggle"><div><b>Disponivel para propostas</b><small>Seu perfil aparece nas buscas</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="mini-calendar"><div class="calendar-title"><button>‹</button><b>Julho 2026</b><button>›</button></div><div class="calendar-grid"><small>D</small><small>S</small><small>T</small><small>Q</small><small>Q</small><small>S</small><small>S</small><i></i><i></i><i></i><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b>12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class="booked">18</b><b>19</b><b>20</b><b class="open">21</b><b class="open">22</b><b>23</b><b>24</b><b>25</b></div></div><div class="calendar-legend"><span><i class="open"></i>Disponivel</span><span><i class="booked"></i>Reservado</span></div></aside>
+        </div>
+      </section>
+
+      <section class="view" id="admin-view">
+        <div class="dashboard-hero"><div class="section-wrap"><span class="kicker light">CENTRAL DE OPERACOES</span><h1>Visao administrativa</h1><p>Acompanhe cadastros, reservas e seguranca da plataforma.</p></div></div>
+        <div class="dashboard-grid section-wrap">
+          <div class="metric-card"><span class="metric-icon"><svg><use href="#icon-users"/></svg></span><div><small>USUARIOS ATIVOS</small><b>1.284</b><span>+42 neste mes</span></div></div>
+          <div class="metric-card"><span class="metric-icon"><svg><use href="#icon-inbox"/></svg></span><div><small>EM ANALISE</small><b>08</b><span>Cadastros de parceiros</span></div></div>
+          <div class="metric-card"><span class="metric-icon"><svg><use href="#icon-calendar"/></svg></span><div><small>RESERVAS ATIVAS</small><b>36</b><span>Nos proximos 30 dias</span></div></div>
+          <div class="metric-card"><span class="metric-icon"><svg><use href="#icon-shield"/></svg></span><div><small>DENUNCIAS ABERTAS</small><b>02</b><span>Dentro do prazo</span></div></div>
+        </div>
+        <div class="dashboard-content section-wrap">
+          <div><div class="section-heading compact"><div><span class="kicker">VERIFICACAO</span><h2>Novos parceiros</h2></div><button class="text-button">Ver fila completa</button></div>
+            <article class="request-card" id="approval-card"><div class="request-top"><div><span class="request-new">DOCUMENTOS ENVIADOS</span><h3>Amazon Fish Turismo</h3><p>Operadora de pesca · Porto Velho, RO</p></div><b>4 arquivos</b></div><div class="request-details"><span><svg><use href="#icon-check"/></svg> Documento pessoal</span><span><svg><use href="#icon-boat"/></svg> Registro da embarcacao</span></div><div class="trip-actions"><button class="danger-link">Reprovar</button><button class="secondary-button">Ver documentos</button><button class="primary-button" id="approve-provider">Aprovar parceiro</button></div></article>
+          </div>
+          <aside class="availability-card"><div class="section-heading compact"><div><span class="kicker">PLATAFORMA</span><h2>Saude da operacao</h2></div></div><div class="availability-toggle"><div><b>Tempo medio de resposta</b><small>Parceiros ativos</small></div><b>7 min</b></div><div class="availability-toggle" style="padding-top:16px"><div><b>Taxa de aceite</b><small>Ultimos 30 dias</small></div><b>84%</b></div><div class="availability-toggle" style="padding-top:16px"><div><b>Avaliacao media</b><small>Experiencias verificadas</small></div><b>4,8</b></div></aside>
+        </div>
+      </section>
+    </main>
+
+    <nav class="mobile-nav"><button class="active" data-view="home"><svg><use href="#icon-compass"/></svg><span>Explorar</span></button><button data-view="trips"><svg><use href="#icon-fish"/></svg><span>Pescas</span></button><button data-view="provider"><svg><use href="#icon-briefcase"/></svg><span>Parceiro</span></button><button data-view="admin"><svg><use href="#icon-shield"/></svg><span>Admin</span></button></nav>
+  </div>
+
+  <div class="modal-backdrop hidden" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title"><div class="modal"><button class="modal-close" data-close="booking-modal">×</button><span class="modal-icon"><svg><use href="#icon-fish"/></svg></span><span class="kicker">SOLICITAR PROPOSTA</span><h2 id="booking-title">Quase la!</h2><p id="booking-provider"></p><div class="booking-summary" id="booking-summary"></div><label class="modal-label">Mensagem ao parceiro<textarea id="booking-message" rows="3" placeholder="Conte o que espera da experiencia..."></textarea></label><button class="primary-button full" id="confirm-booking">Enviar solicitacao</button><small class="modal-disclaimer">Sem cobranca agora. O parceiro confirmara os detalhes.</small></div></div>
+  <div class="modal-backdrop hidden" id="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-title"><div class="modal chat-modal"><button class="modal-close" data-close="chat-modal">×</button><div class="chat-head"><div class="provider-avatar">MT</div><div><h2 id="chat-title">Marcos Tavares</h2><span><i></i> Online agora</span></div></div><div class="messages" id="messages"></div><form class="chat-input" id="chat-form"><input id="chat-message" placeholder="Escreva uma mensagem..." autocomplete="off"><button class="primary-button" aria-label="Enviar"><svg><use href="#icon-send"/></svg></button></form></div></div>
+  <div class="toast hidden" id="toast"><span><svg><use href="#icon-check"/></svg></span><div><b id="toast-title">Tudo certo!</b><p id="toast-message"></p></div></div>
+
+  <svg class="svg-defs" aria-hidden="true">
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21v-2a7 7 0 0 1 14 0v2M16 4a4 4 0 0 1 0 8M17 15a6 6 0 0 1 5 6"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="icon-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></symbol>
+    <symbol id="icon-boat" viewBox="0 0 24 24"><path d="m3 15 3-6h12l3 6M8 9V5h6l2 4M2 17c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/></symbol>
+    <symbol id="icon-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 3v7M12 14v7M3 12h7M14 12h7M5.6 5.6l5 5M13.4 13.4l5 5M18.4 5.6l-5 5M10.6 13.4l-5 5"/></symbol>
+    <symbol id="icon-package" viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4-8-4ZM4 7v10l8 4 8-4V7M12 11v10"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-5"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></symbol>
+    <symbol id="icon-back" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="icon-inbox" viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 14h5l2 3h2l2-3h5"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 2 3 6 7 .9-5 4.8 1.2 6.8L12 17.3l-6.2 3.2L7 13.7 2 9l7-.9L12 2Z"/></symbol>
+    <symbol id="icon-wallet" viewBox="0 0 24 24"><path d="M3 6h17v14H3zM3 6l13-3v3M16 11h6v5h-6z"/></symbol>
+    <symbol id="icon-fish" viewBox="0 0 24 24"><path d="M4 12c4-6 10-6 15-2l3-3v10l-3-3c-5 4-11 4-15-2Z"/><circle cx="16" cy="10.5" r="1"/></symbol>
+    <symbol id="icon-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 12h18M10 12v2h4v-2"/></symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="m3 3 19 9-19 9 4-9-4-9ZM7 12h15"/></symbol>
+  </svg>
+  <script src="/app.js"></script>
+</body>
+</html>

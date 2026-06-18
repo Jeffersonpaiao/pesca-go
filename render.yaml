@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: pesca-go
+    runtime: node
+    plan: free
+    buildCommand: echo "Sem etapa de compilacao"
+    startCommand: npm start
+    healthCheckPath: /api/rivers
+    autoDeploy: true
